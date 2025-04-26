@@ -1,0 +1,15 @@
+{
+    "name": "Planificacion",
+    "namespace": "Planificacion",
+    "version": "0.1.0",
+    "description": "Planificación de subprocesos para al EPEMAPAR",
+    "author": "Andrés. Yépez",
+    "url": "https://yxp.app/AquaEP",
+    "license": "MIT",
+    "dependencies": [],
+    "autoload": {
+      "psr-4": {
+        "Planificacion\\": ""
+      }
+    }
+  }
