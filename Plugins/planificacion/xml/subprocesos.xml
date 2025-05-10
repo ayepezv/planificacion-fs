@@ -1,0 +1,31 @@
+<table>
+    <column>
+        <name>id</name>
+        <type>serial</type>
+        <null>NO</null>
+        <default>nextval('subprocesos_id_seq')</default>
+    </column>
+    <column>
+        <name>proceso_id</name>
+        <type>integer</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>nombre</name>
+        <type>varchar(100)</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>descripcion</name>
+        <type>text</type>
+        <null>YES</null>
+    </column>
+    <constraint>
+        <name>subprocesos_pkey</name>
+        <type>PRIMARY KEY (id)</type>
+    </constraint>
+    <constraint>
+        <name>fk_subprocesos_procesos</name>
+        <type>FOREIGN KEY (proceso_id) REFERENCES procesos (id) ON DELETE RESTRICT ON UPDATE CASCADE</type>
+    </constraint>
+</table>

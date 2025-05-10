@@ -1,0 +1,17 @@
+<table>
+    <column>
+        <name>id</name>
+        <type>serial</type>
+        <null>NO</null>
+        <default>nextval('estados_tarea_id_seq')</default>
+    </column>
+    <column>
+        <name>nombre</name>
+        <type>varchar(50)</type>
+        <null>NO</null>
+    </column>
+    <constraint>
+        <name>estados_tarea_pkey</name>
+        <type>PRIMARY KEY (id)</type>
+    </constraint>
+</table>

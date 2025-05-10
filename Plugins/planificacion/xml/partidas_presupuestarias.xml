@@ -1,0 +1,57 @@
+<table>
+    <column>
+        <name>id</name>
+        <type>serial</type>
+        <null>NO</null>
+        <default>nextval('partidas_presupuestarias_id_seq')</default>
+    </column>
+    <column>
+        <name>codigo</name>
+        <type>varchar(50)</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>nombre</name>
+        <type>varchar(100)</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>subproceso_id</name>
+        <type>integer</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>anio</name>
+        <type>integer</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>presupuesto_codificado</name>
+        <type>double precision</type>
+        <null>NO</null>
+        <default>0</default>
+    </column>
+    <column>
+        <name>monto_comprometido</name>
+        <type>double precision</type>
+        <null>YES</null>
+    </column>
+    <column>
+        <name>monto_devengado</name>
+        <type>double precision</type>
+        <null>YES</null>
+    </column>
+    <column>
+        <name>monto_pagado</name>
+        <type>double precision</type>
+        <null>YES</null>
+    </column>
+    <constraint>
+        <name>partidas_presupuestarias_pkey</name>
+        <type>PRIMARY KEY (id)</type>
+    </constraint>
+    <constraint>
+        <name>fk_partidas_subprocesos</name>
+        <type>FOREIGN KEY (subproceso_id) REFERENCES subprocesos (id) ON DELETE RESTRICT ON UPDATE CASCADE</type>
+    </constraint>
+</table>

@@ -1,0 +1,81 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                {% if fsc.model.id %}Editar Tarea Asignada{% else %}Nueva Tarea Asignada{% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="form-group">
+                    <label>Tipo de Tarea:</label>
+                    <select name="tipo_tarea_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for tipo in fsc.tipostarea %}
+                            <option value="{{ tipo.id }}" {% if fsc.model.tipo_tarea_id == tipo.id %}selected{% endif %}>{{ tipo.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Usuario Asignado:</label>
+                    <select name="usuario_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for usuario in fsc.usuarios %}
+                            <option value="{{ usuario.id }}" {% if fsc.model.usuario_id == usuario.id %}selected{% endif %}>{{ usuario.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Asignador:</label>
+                    <select name="asignador_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for usuario in fsc.usuarios %}
+                            <option value="{{ usuario.id }}" {% if fsc.model.asignador_id == usuario.id %}selected{% endif %}>{{ usuario.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Fecha Límite:</label>
+                            <input type="date" name="fecha_limite" value="{{ fsc.model.fecha_limite }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Prioridad:</label>
+                            <select name="prioridad_id" class="form-control">
+                                <option value="">-- Seleccione --</option>
+                                {% for prioridad in fsc.prioridades %}
+                                    <option value="{{ prioridad.id }}" {% if fsc.model.prioridad_id == prioridad.id %}selected{% endif %}>{{ prioridad.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Estado:</label>
+                    <select name="estado_id" class="form-control">
+                        <option value="">-- Seleccione --</option>
+                        {% for estado in fsc.estados %}
+                            <option value="{{ estado.id }}" {% if fsc.model.estado_id == estado.id %}selected{% endif %}>{{ estado.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea name="descripcion" class="form-control" rows="3">{{ fsc.model.descripcion }}</textarea>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

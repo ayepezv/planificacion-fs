@@ -1,0 +1,37 @@
+{% extends "Master/ViewController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>Detalle de la Actividad</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Código:</dt>
+                <dd class="col-sm-9">{{ fsc.model.codigo }}</dd>
+                <dt class="col-sm-3">Nombre:</dt>
+                <dd class="col-sm-9">{{ fsc.model.nombre }}</dd>
+                <dt class="col-sm-3">Procedimiento:</dt>
+                <dd class="col-sm-9">{{ fsc.getProcedimientoNombre(fsc.model.procedimiento_id) }}</dd>
+                <dt class="col-sm-3">Descripción:</dt>
+                <dd class="col-sm-9">{{ fsc.model.descripcion }}</dd>
+                <dt class="col-sm-3">Impacta Presupuesto:</dt>
+                <dd class="col-sm-9">
+                    {% if fsc.model.impacta_presupuesto %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </dd>
+            </dl>
+            <a href="{{ fsc.url() }}?action=edit&id={{ fsc.model.id }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar
+            </a>
+            <a href="{{ fsc.url() }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver al listado
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

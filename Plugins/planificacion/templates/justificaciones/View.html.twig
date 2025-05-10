@@ -1,0 +1,45 @@
+{% extends "Master/ViewController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>Detalle de la Justificación</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Tarea:</dt>
+                <dd class="col-sm-9">{{ fsc.getTareaNombre(fsc.model.tarea_id) }}</dd>
+                <dt class="col-sm-3">Motivo:</dt>
+                <dd class="col-sm-9">{{ fsc.model.motivo }}</dd>
+                <dt class="col-sm-3">Solicita Ampliación:</dt>
+                <dd class="col-sm-9">
+                    {% if fsc.model.solicita_ampliacion %}
+                        Sí
+                    {% else %}
+                        No
+                    {% endif %}
+                </dd>
+                {% if fsc.model.solicita_ampliacion %}
+                <dt class="col-sm-3">Nueva Fecha Límite:</dt>
+                <dd class="col-sm-9">{{ fsc.model.nueva_fecha_limite|date('d/m/Y') }}</dd>
+                <dt class="col-sm-3">Tiempo Adicional (min):</dt>
+                <dd class="col-sm-9">{{ fsc.model.tiempo_adicional_min }}</dd>
+                {% endif %}
+                <dt class="col-sm-3">Fecha Solicitud:</dt>
+                <dd class="col-sm-9">{{ fsc.model.fecha_solicitud|date('d/m/Y H:i') }}</dd>
+                <dt class="col-sm-3">Estado Aprobación:</dt>
+                <dd class="col-sm-9">{{ fsc.model.estado_aprobacion }}</dd>
+                <dt class="col-sm-3">Observaciones:</dt>
+                <dd class="col-sm-9">{{ fsc.model.observaciones }}</dd>
+            </dl>
+            <a href="{{ fsc.url() }}?action=edit&id={{ fsc.model.id }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar
+            </a>
+            <a href="{{ fsc.url() }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver al listado
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>
+                <i class="fas fa-sitemap" aria-hidden="true"></i> Procesos
+            </h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <div class="btn-group">
+                <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                    <i class="fas fa-plus fa-fw" aria-hidden="true"></i>
+                    <span class="d-none d-sm-inline-block">Nuevo Proceso</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proceso in fsc.procesos %}
+            <tr>
+                <td>{{ proceso.codigo }}</td>
+                <td>{{ proceso.nombre }}</td>
+                <td>{{ proceso.tipo }}</td>
+                <td>{{ proceso.descripcion }}</td>
+                <td class="text-right">
+                    <a href="{{ fsc.url() }}?action=edit&id={{ proceso.id }}" 
+                       class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=delete&id={{ proceso.id }}" 
+                       class="btn btn-danger btn-sm" 
+                       onclick="return confirm('¿Está seguro?')">
+                        <i class="fas fa-trash-alt fa-fw" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center">No hay procesos registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

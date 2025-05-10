@@ -1,0 +1,22 @@
+<table>
+    <column>
+        <name>id</name>
+        <type>serial</type>
+        <null>NO</null>
+        <default>nextval('puestos_id_seq')</default>
+    </column>
+    <column>
+        <name>nombre</name>
+        <type>varchar(100)</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>descripcion</name>
+        <type>text</type>
+        <null>YES</null>
+    </column>
+    <constraint>
+        <name>puestos_pkey</name>
+        <type>PRIMARY KEY (id)</type>
+    </constraint>
+</table>

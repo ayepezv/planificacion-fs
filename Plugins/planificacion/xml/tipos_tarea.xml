@@ -1,0 +1,14 @@
+<!-- tipos_tarea.xml -->
+<entity name="tipos_tarea">
+    <field name="id" type="integer" key="primary" autoincrement="true" />
+    <field name="actividad_id" type="integer" relation="actividades" required="true" />
+    <field name="nombre" type="string" size="255" required="true" />
+    <field name="descripcion" type="text" />
+    <field name="tiempo_estimado_min" type="integer" required="true" />
+    <field name="requiere_evidencia" type="bool" default="false" />
+    <field name="es_hito_presupuestario" type="bool" default="false" />
+    <field name="fecha_creacion" type="datetime" readonly="true" />
+    <index name="nombre">
+        <field name="nombre" />
+    </index>
+</entity>

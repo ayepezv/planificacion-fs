@@ -1,0 +1,71 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><i class="fas fa-cogs"></i> Tipos de Tarea</h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                <i class="fas fa-plus"></i> Nuevo Tipo de Tarea
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Actividad</th>
+                <th>Tiempo Estimado (min)</th>
+                <th>Requiere Evidencia</th>
+                <th>Hito Presupuestario</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo in fsc.tipostarea %}
+            <tr>
+                <td>{{ tipo.nombre }}</td>
+                <td>{{ fsc.getActividadNombre(tipo.actividad_id) }}</td>
+                <td>{{ tipo.tiempo_estimado_min }}</td>
+                <td>
+                    {% if tipo.requiere_evidencia %}
+                        <i class="fas fa-check text-success"></i>
+                    {% else %}
+                        <i class="fas fa-times text-danger"></i>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if tipo.es_hito_presupuestario %}
+                        <i class="fas fa-check text-success"></i>
+                    {% else %}
+                        <i class="fas fa-times text-danger"></i>
+                    {% endif %}
+                </td>
+                <td class="text-right">
+                    <a href="{{ fsc.url() }}?action=view&id={{ tipo.id }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=edit&id={{ tipo.id }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=delete&id={{ tipo.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro?')">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">No hay tipos de tarea registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

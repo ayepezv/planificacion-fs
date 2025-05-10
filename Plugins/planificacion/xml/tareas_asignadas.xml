@@ -1,0 +1,18 @@
+<!-- tareas_asignadas.xml -->
+<entity name="tareas_asignadas">
+    <field name="id" type="integer" key="primary" autoincrement="true" />
+    <field name="tipo_tarea_id" type="integer" relation="tipos_tarea" required="true" />
+    <field name="usuario_id" type="integer" required="true" />
+    <field name="asignador_id" type="integer" required="true" />
+    <field name="fecha_asignacion" type="datetime" readonly="true" />
+    <field name="fecha_limite" type="datetime" />
+    <field name="prioridad_id" type="integer" relation="prioridades" />
+    <field name="estado_id" type="integer" relation="estados_tarea" />
+    <field name="descripcion" type="text" />
+    <field name="fecha_inicio" type="datetime" />
+    <field name="fecha_fin" type="datetime" />
+    <field name="tiempo_ejecucion_min" type="integer" />
+    <field name="observaciones" type="text" />
+    <field name="evaluacion_cumplimiento" type="string" size="20" />
+    <field name="fecha_actualizacion" type="datetime" readonly="true" />
+</entity>

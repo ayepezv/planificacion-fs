@@ -1,0 +1,43 @@
+{% extends "Master/ViewController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>Detalle del Procedimiento</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Código:</dt>
+                <dd class="col-sm-9">{{ fsc.model.codigo }}</dd>
+                <dt class="col-sm-3">Nombre:</dt>
+                <dd class="col-sm-9">{{ fsc.model.nombre }}</dd>
+                <dt class="col-sm-3">Subproceso:</dt>
+                <dd class="col-sm-9">{{ fsc.getSubprocesoNombre(fsc.model.subproceso_id) }}</dd>
+                <dt class="col-sm-3">Versión:</dt>
+                <dd class="col-sm-9">{{ fsc.model.version }}</dd>
+                <dt class="col-sm-3">Fecha Aprobación:</dt>
+                <dd class="col-sm-9">{{ fsc.model.fecha_aprobacion|date('d/m/Y') }}</dd>
+                <dt class="col-sm-3">Documento Oficial:</dt>
+                <dd class="col-sm-9">
+                    {% if fsc.model.documento_url %}
+                        <a href="{{ fsc.model.documento_url }}" target="_blank">{{ fsc.model.documento_url }}</a>
+                    {% else %}
+                        --
+                    {% endif %}
+                </dd>
+                <dt class="col-sm-3">Objetivo:</dt>
+                <dd class="col-sm-9">{{ fsc.model.objetivo }}</dd>
+                <dt class="col-sm-3">Alcance:</dt>
+                <dd class="col-sm-9">{{ fsc.model.alcance }}</dd>
+            </dl>
+            <a href="{{ fsc.url() }}?action=edit&id={{ fsc.model.id }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar
+            </a>
+            <a href="{{ fsc.url() }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver al listado
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

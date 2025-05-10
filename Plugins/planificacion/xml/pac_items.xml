@@ -1,0 +1,17 @@
+<!-- pac_items.xml -->
+<entity name="pac_items">
+    <field name="id" type="integer" key="primary" autoincrement="true" />
+    <field name="partida_id" type="integer" relation="partidas_presupuestarias" required="true" />
+    <field name="anio" type="integer" required="true" />
+    <field name="codigo" type="string" size="20" required="true" />
+    <field name="descripcion" type="text" />
+    <field name="tipo_compra" type="string" size="50" />
+    <field name="procedimiento" type="string" size="50" />
+    <field name="monto_referencial" type="decimal" />
+    <field name="estado" type="string" size="50" />
+    <field name="fecha_creacion" type="datetime" readonly="true" />
+    <field name="fecha_actualizacion" type="datetime" readonly="true" />
+    <index name="codigo">
+        <field name="codigo" />
+    </index>
+</entity>

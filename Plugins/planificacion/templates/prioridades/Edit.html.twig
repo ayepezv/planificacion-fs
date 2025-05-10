@@ -1,0 +1,30 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                {% if fsc.model.id %}Editar Prioridad{% else %}Nueva Prioridad{% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" value="{{ fsc.model.nombre }}" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label>Nivel:</label>
+                    <input type="number" name="nivel" value="{{ fsc.model.nivel }}" class="form-control" required/>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
