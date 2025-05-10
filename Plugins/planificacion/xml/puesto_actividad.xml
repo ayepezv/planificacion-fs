@@ -1,0 +1,30 @@
+<table>
+    <column>
+        <name>id</name>
+        <type>serial</type>
+        <null>NO</null>
+        <default>nextval('puesto_actividad_id_seq')</default>
+    </column>
+    <column>
+        <name>puesto_id</name>
+        <type>integer</type>
+        <null>NO</null>
+    </column>
+    <column>
+        <name>actividad_id</name>
+        <type>integer</type>
+        <null>NO</null>
+    </column>
+    <constraint>
+        <name>puesto_actividad_pkey</name>
+        <type>PRIMARY KEY (id)</type>
+    </constraint>
+    <constraint>
+        <name>fk_puesto_actividad_puesto</name>
+        <type>FOREIGN KEY (puesto_id) REFERENCES puestos (id) ON DELETE RESTRICT ON UPDATE CASCADE</type>
+    </constraint>
+    <constraint>
+        <name>fk_puesto_actividad_actividad</name>
+        <type>FOREIGN KEY (actividad_id) REFERENCES actividades (id) ON DELETE RESTRICT ON UPDATE CASCADE</type>
+    </constraint>
+</table>

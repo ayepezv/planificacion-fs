@@ -1,0 +1,178 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>
+                <i class="fas fa-tasks" aria-hidden="true"></i> Tareas Asignadas
+            </h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <div class="btn-group">
+                <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                    <i class="fas fa-plus fa-fw" aria-hidden="true"></i>
+                    <span class="d-none d-sm-inline-block">Nueva Tarea</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="container-fluid mb-3">
+    <form method="post" class="form">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Estado:</label>
+                    <select name="estado_id" class="form-control" onchange="this.form.submit()">
+                        <option value="">Todos</option>
+                        {% for estado in fsc.estados %}
+                            <option value="{{ estado.id }}" 
+                                    {% if fsc.estado_id == estado.id %}selected{% endif %}>
+                                {{ estado.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Prioridad:</label>
+                    <select name="prioridad_id" class="form-control" onchange="this.form.submit()">
+                        <option value="">Todas</option>
+                        {% for prioridad in fsc.prioridades %}
+                            <option value="{{ prioridad.id }}" 
+                                    {% if fsc.prioridad_id == prioridad.id %}selected{% endif %}>
+                                {{ prioridad.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Usuario Asignado:</label>
+                    <select name="usuario_id" class="form-control" onchange="this.form.submit()">
+                        <option value="">Todos</option>
+                        {% for usuario in fsc.usuarios %}
+                            <option value="{{ usuario.id }}" 
+                                    {% if fsc.usuario_id == usuario.id %}selected{% endif %}>
+                                {{ usuario.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Fecha Límite:</label>
+                    <input type="date" name="fecha_limite" 
+                           value="{{ fsc.fecha_limite }}" 
+                           class="form-control" 
+                           onchange="this.form.submit()"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Tarea</th>
+                <th>Asignado a</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+                <th>Fecha Límite</th>
+                <th>Progreso</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in fsc.tareas %}
+            <tr class="{% if tarea.fecha_limite < 'now'|date and tarea.estado_id != 'completada' %}table-danger{% endif %}">
+                <td>
+                    <strong>{{ tarea.tipo_tarea.nombre }}</strong><br>
+                    <small>{{ tarea.descripcion }}</small>
+                </td>
+                <td>{{ tarea.usuario.nombre }}</td>
+                <td>
+                    <span class="badge badge-{{ tarea.prioridad.color }}">
+                        {{ tarea.prioridad.nombre }}
+                    </span>
+                </td>
+                <td>
+                    <span class="badge badge-{{ tarea.estado.color }}">
+                        {{ tarea.estado.nombre }}
+                    </span>
+                </td>
+                <td>{{ tarea.fecha_limite|date('d/m/Y') }}</td>
+                <td>
+                    {% if tarea.fecha_inicio %}
+                        {% set progreso = ((tarea.tiempo_ejecucion_min / tarea.tipo_tarea.tiempo_estimado_min) * 100)|round %}
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" 
+                                 style="width: {{ progreso }}%" 
+                                 aria-valuenow="{{ progreso }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100">
+                                {{ progreso }}%
+                            </div>
+                        </div>
+                    {% else %}
+                        No iniciada
+                    {% endif %}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <a href="{{ fsc.url() }}?action=edit&id={{ tarea.id }}" 
+                           class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+                        </a>
+                        {% if tarea.estado_id != 'completada' %}
+                            <a href="{{ fsc.url() }}?action=start&id={{ tarea.id }}" 
+                               class="btn btn-success btn-sm" 
+                               title="Iniciar Tarea">
+                                <i class="fas fa-play fa-fw" aria-hidden="true"></i>
+                            </a>
+                        {% endif %}
+                        <a href="{{ fsc.url() }}?action=view&id={{ tarea.id }}" 
+                           class="btn btn-info btn-sm">
+                            <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" class="text-center">No hay tareas asignadas</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Paginación -->
+{% if fsc.paginas > 1 %}
+<div class="row">
+    <div class="col">
+        <nav aria-label="Navegación de páginas">
+            <ul class="pagination justify-content-center">
+                {% for pagina in 1..fsc.paginas %}
+                    <li class="page-item {% if pagina == fsc.pagina_actual %}active{% endif %}">
+                        <a class="page-link" href="{{ fsc.url() }}?page={{ pagina }}">
+                            {{ pagina }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

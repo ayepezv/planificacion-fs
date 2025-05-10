@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
+class ComposerStaticInitceac5a83d2fd536f1bb2e4c3ea1172fe
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -25,10 +25,6 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
-        array (
-            'Whoops\\' => 7,
-        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -49,7 +45,6 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
         ),
         'P' => 
         array (
-            'Psr\\Log\\' => 8,
             'ParseCsv\\' => 9,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
@@ -63,10 +58,6 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
     );
 
     public static $prefixDirsPsr4 = array (
-        'Whoops\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
-        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -114,10 +105,6 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
         'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
-        ),
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'ParseCsv\\' => 
         array (
@@ -204,6 +191,7 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
         'FacturaScripts\\Core\\Contract\\ErrorControllerInterface' => __DIR__ . '/../..' . '/Core/Contract/ErrorControllerInterface.php',
         'FacturaScripts\\Core\\Controller\\AdminPlugins' => __DIR__ . '/../..' . '/Core/Controller/AdminPlugins.php',
         'FacturaScripts\\Core\\Controller\\ApiCreateFacturaCliente' => __DIR__ . '/../..' . '/Core/Controller/ApiCreateFacturaCliente.php',
+        'FacturaScripts\\Core\\Controller\\ApiCreateFacturaRectificativaCliente' => __DIR__ . '/../..' . '/Core/Controller/ApiCreateFacturaRectificativaCliente.php',
         'FacturaScripts\\Core\\Controller\\ApiExportFacturaCliente' => __DIR__ . '/../..' . '/Core/Controller/ApiExportFacturaCliente.php',
         'FacturaScripts\\Core\\Controller\\ApiRoot' => __DIR__ . '/../..' . '/Core/Controller/ApiRoot.php',
         'FacturaScripts\\Core\\Controller\\ConfigEmail' => __DIR__ . '/../..' . '/Core/Controller/ConfigEmail.php',
@@ -838,6 +826,7 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
         'FacturaScripts\\Test\\Core\\Lib\\CodePatternsTest' => __DIR__ . '/../..' . '/Test/Core/Lib/CodePatternsTest.php',
         'FacturaScripts\\Test\\Core\\Lib\\Email\\MailNotifierTest' => __DIR__ . '/../..' . '/Test/Core/Lib/Email/MailNotifierTest.php',
         'FacturaScripts\\Test\\Core\\Lib\\Email\\NewMailTest' => __DIR__ . '/../..' . '/Test/Core/Lib/Email/NewMailTest.php',
+        'FacturaScripts\\Test\\Core\\Lib\\FiscalNumberValidatorTest' => __DIR__ . '/../..' . '/Test/Core/Lib/FiscalNumberValidatorTest.php',
         'FacturaScripts\\Test\\Core\\Lib\\IPFilterTest' => __DIR__ . '/../..' . '/Test/Core/Lib/IPFilterTest.php',
         'FacturaScripts\\Test\\Core\\Lib\\LedgerTest' => __DIR__ . '/../..' . '/Test/Core/Lib/LedgerTest.php',
         'FacturaScripts\\Test\\Core\\Lib\\ViesTest' => __DIR__ . '/../..' . '/Test/Core/Lib/ViesTest.php',
@@ -921,17 +910,6 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
         'ParseCsv\\enums\\SortEnum' => __DIR__ . '/..' . '/parsecsv/php-parsecsv/src/enums/SortEnum.php',
         'ParseCsv\\extensions\\DatatypeTrait' => __DIR__ . '/..' . '/parsecsv/php-parsecsv/src/extensions/DatatypeTrait.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
-        'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
-        'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/Psr/Log/LogLevel.php',
-        'Psr\\Log\\LoggerAwareInterface' => __DIR__ . '/..' . '/psr/log/Psr/Log/LoggerAwareInterface.php',
-        'Psr\\Log\\LoggerAwareTrait' => __DIR__ . '/..' . '/psr/log/Psr/Log/LoggerAwareTrait.php',
-        'Psr\\Log\\LoggerInterface' => __DIR__ . '/..' . '/psr/log/Psr/Log/LoggerInterface.php',
-        'Psr\\Log\\LoggerTrait' => __DIR__ . '/..' . '/psr/log/Psr/Log/LoggerTrait.php',
-        'Psr\\Log\\NullLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/NullLogger.php',
-        'Psr\\Log\\Test\\DummyTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/DummyTest.php',
-        'Psr\\Log\\Test\\LoggerInterfaceTest' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/LoggerInterfaceTest.php',
-        'Psr\\Log\\Test\\TestLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/Test/TestLogger.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\HttpFoundation\\AcceptHeader' => __DIR__ . '/..' . '/symfony/http-foundation/AcceptHeader.php',
@@ -1357,27 +1335,6 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
         'Twig\\Util\\TemplateDirIterator' => __DIR__ . '/..' . '/twig/twig/src/Util/TemplateDirIterator.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
-        'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
-        'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
-        'Whoops\\Exception\\Frame' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Frame.php',
-        'Whoops\\Exception\\FrameCollection' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/FrameCollection.php',
-        'Whoops\\Exception\\Inspector' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Inspector.php',
-        'Whoops\\Handler\\CallbackHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/CallbackHandler.php',
-        'Whoops\\Handler\\Handler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/Handler.php',
-        'Whoops\\Handler\\HandlerInterface' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/HandlerInterface.php',
-        'Whoops\\Handler\\JsonResponseHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/JsonResponseHandler.php',
-        'Whoops\\Handler\\PlainTextHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/PlainTextHandler.php',
-        'Whoops\\Handler\\PrettyPageHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/PrettyPageHandler.php',
-        'Whoops\\Handler\\XmlResponseHandler' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Handler/XmlResponseHandler.php',
-        'Whoops\\Inspector\\InspectorFactory' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Inspector/InspectorFactory.php',
-        'Whoops\\Inspector\\InspectorFactoryInterface' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Inspector/InspectorFactoryInterface.php',
-        'Whoops\\Inspector\\InspectorInterface' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Inspector/InspectorInterface.php',
-        'Whoops\\Run' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Run.php',
-        'Whoops\\RunInterface' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/RunInterface.php',
-        'Whoops\\Util\\HtmlDumperOutput' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/HtmlDumperOutput.php',
-        'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
-        'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
-        'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XLSXWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
         'XLSXWriter_BuffererWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
     );
@@ -1385,9 +1342,9 @@ class ComposerStaticInitf563123894c1ead047bf95919b5c85ae
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf563123894c1ead047bf95919b5c85ae::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf563123894c1ead047bf95919b5c85ae::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf563123894c1ead047bf95919b5c85ae::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitceac5a83d2fd536f1bb2e4c3ea1172fe::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitceac5a83d2fd536f1bb2e4c3ea1172fe::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitceac5a83d2fd536f1bb2e4c3ea1172fe::$classMap;
 
         }, null, ClassLoader::class);
     }

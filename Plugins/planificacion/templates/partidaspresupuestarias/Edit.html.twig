@@ -1,0 +1,71 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                {% if fsc.model.id %}Editar Partida Presupuestaria{% else %}Nueva Partida Presupuestaria{% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Código:</label>
+                            <input type="text" name="codigo" value="{{ fsc.model.codigo }}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" name="nombre" value="{{ fsc.model.nombre }}" class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subproceso:</label>
+                    <select name="subproceso_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for subproceso in fsc.subprocesos %}
+                            <option value="{{ subproceso.id }}" {% if fsc.model.subproceso_id == subproceso.id %}selected{% endif %}>{{ subproceso.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Año:</label>
+                            <input type="number" name="anio" value="{{ fsc.model.anio }}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label>Presupuesto Codificado:</label>
+                            <input type="number" step="0.01" name="presupuesto_codificado" value="{{ fsc.model.presupuesto_codificado }}" class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Monto Comprometido:</label>
+                    <input type="number" step="0.01" name="monto_comprometido" value="{{ fsc.model.monto_comprometido }}" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Monto Devengado:</label>
+                    <input type="number" step="0.01" name="monto_devengado" value="{{ fsc.model.monto_devengado }}" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Monto Pagado:</label>
+                    <input type="number" step="0.01" name="monto_pagado" value="{{ fsc.model.monto_pagado }}" class="form-control"/>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

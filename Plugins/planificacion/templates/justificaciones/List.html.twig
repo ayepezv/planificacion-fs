@@ -1,0 +1,65 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><i class="fas fa-exclamation-triangle"></i> Justificaciones</h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                <i class="fas fa-plus"></i> Nueva Justificación
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Tarea</th>
+                <th>Motivo</th>
+                <th>Solicita Ampliación</th>
+                <th>Fecha Solicitud</th>
+                <th>Estado Aprobación</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for justificacion in fsc.justificaciones %}
+            <tr>
+                <td>{{ fsc.getTareaNombre(justificacion.tarea_id) }}</td>
+                <td>{{ justificacion.motivo }}</td>
+                <td>
+                    {% if justificacion.solicita_ampliacion %}
+                        <i class="fas fa-check text-success"></i>
+                    {% else %}
+                        <i class="fas fa-times text-danger"></i>
+                    {% endif %}
+                </td>
+                <td>{{ justificacion.fecha_solicitud|date('d/m/Y H:i') }}</td>
+                <td>{{ justificacion.estado_aprobacion }}</td>
+                <td class="text-right">
+                    <a href="{{ fsc.url() }}?action=view&id={{ justificacion.id }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=edit&id={{ justificacion.id }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=delete&id={{ justificacion.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro?')">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">No hay justificaciones registradas</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

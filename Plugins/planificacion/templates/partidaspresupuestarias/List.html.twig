@@ -1,0 +1,111 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>
+                <i class="fas fa-money-bill-wave" aria-hidden="true"></i> 
+                Partidas Presupuestarias
+            </h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <div class="btn-group">
+                <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                    <i class="fas fa-plus fa-fw" aria-hidden="true"></i>
+                    <span class="d-none d-sm-inline-block">Nueva Partida</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="container-fluid mb-3">
+    <form method="post" class="form">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Año Fiscal:</label>
+                    <select name="anio" class="form-control" onchange="this.form.submit()">
+                        {% for year in fsc.getYears() %}
+                            <option value="{{ year }}" 
+                                    {% if fsc.anio == year %}selected{% endif %}>
+                                {{ year }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Subproceso:</label>
+                    <select name="subproceso_id" class="form-control" onchange="this.form.submit()">
+                        <option value="">Todos</option>
+                        {% for subproceso in fsc.subprocesos %}
+                            <option value="{{ subproceso.id }}" 
+                                    {% if fsc.subproceso_id == subproceso.id %}selected{% endif %}>
+                                {{ subproceso.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Subproceso</th>
+                <th class="text-right">Presupuesto</th>
+                <th class="text-right">Comprometido</th>
+                <th class="text-right">Devengado</th>
+                <th class="text-right">Pagado</th>
+                <th class="text-right">Saldo</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for partida in fsc.partidas %}
+            <tr>
+                <td>{{ partida.codigo }}</td>
+                <td>{{ partida.nombre }}</td>
+                <td>{{ fsc.getSubprocesoNombre(partida.subproceso_id) }}</td>
+                <td class="text-right">{{ partida.presupuesto_codificado|number_format(2) }}</td>
+                <td class="text-right">{{ partida.monto_comprometido|number_format(2) }}</td>
+                <td class="text-right">{{ partida.monto_devengado|number_format(2) }}</td>
+                <td class="text-right">{{ partida.monto_pagado|number_format(2) }}</td>
+                <td class="text-right">
+                    {{ (partida.presupuesto_codificado - partida.monto_comprometido)|number_format(2) }}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <a href="{{ fsc.url() }}?action=edit&id={{ partida.id }}" 
+                           class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="{{ fsc.url() }}?action=view&id={{ partida.id }}" 
+                           class="btn btn-info btn-sm">
+                            <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="9" class="text-center">
+                    No hay partidas presupuestarias registradas
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

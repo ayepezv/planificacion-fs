@@ -1,0 +1,75 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                {% if fsc.model.id %}Editar Justificación{% else %}Nueva Justificación{% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="form-group">
+                    <label>Tarea:</label>
+                    <select name="tarea_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for tarea in fsc.tareas %}
+                            <option value="{{ tarea.id }}" {% if fsc.model.tarea_id == tarea.id %}selected{% endif %}>{{ tarea.descripcion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Motivo:</label>
+                    <textarea name="motivo" class="form-control" rows="3" required>{{ fsc.model.motivo }}</textarea>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" name="solicita_ampliacion" class="form-check-input" id="solicita_ampliacion" {% if fsc.model.solicita_ampliacion %}checked{% endif %}>
+                    <label class="form-check-label" for="solicita_ampliacion">Solicita Ampliación</label>
+                </div>
+                {% if fsc.model.solicita_ampliacion %}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Nueva Fecha Límite:</label>
+                            <input type="date" name="nueva_fecha_limite" value="{{ fsc.model.nueva_fecha_limite }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Tiempo Adicional (min):</label>
+                            <input type="number" name="tiempo_adicional_min" value="{{ fsc.model.tiempo_adicional_min }}" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <label>Observaciones:</label>
+                    <textarea name="observaciones" class="form-control" rows="2">{{ fsc.model.observaciones }}</textarea>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        document.getElementById('solicita_ampliacion').addEventListener('change', function() {
+            var nuevaFechaLimite = document.querySelector('input[name="nueva_fecha_limite"]').parentNode.parentNode;
+            var tiempoAdicional = document.querySelector('input[name="tiempo_adicional_min"]').parentNode.parentNode;
+            if (this.checked) {
+                nuevaFechaLimite.style.display = 'block';
+                tiempoAdicional.style.display = 'block';
+            } else {
+                nuevaFechaLimite.style.display = 'none';
+                tiempoAdicional.style.display = 'none';
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>Relacionar Actividad y Partida</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="form-group">
+                    <label>Actividad:</label>
+                    <select name="actividad_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for actividad in fsc.actividades %}
+                            <option value="{{ actividad.id }}">{{ actividad.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Partida:</label>
+                    <select name="partida_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for partida in fsc.partidas %}
+                            <option value="{{ partida.id }}">{{ partida.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ítem PAC:</label>
+                    <select name="pac_item_id" class="form-control">
+                        <option value="">-- Seleccione --</option>
+                        {% for item in fsc.pacitems %}
+                            <option value="{{ item.id }}">{{ item.descripcion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <input type="text" name="descripcion" value="{{ fsc.model.descripcion }}" class="form-control"/>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

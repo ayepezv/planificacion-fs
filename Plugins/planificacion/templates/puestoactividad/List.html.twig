@@ -1,0 +1,47 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><i class="fas fa-link"></i> Puestos y Actividades</h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                <i class="fas fa-plus"></i> Asignar Puesto a Actividad
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Puesto</th>
+                <th>Actividad</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for relacion in fsc.relaciones %}
+            <tr>
+                <td>{{ fsc.getPuestoNombre(relacion.puesto_id) }}</td>
+                <td>{{ fsc.getActividadNombre(relacion.actividad_id) }}</td>
+                <td class="text-right">
+                    <a href="{{ fsc.url() }}?action=delete&puesto_id={{ relacion.puesto_id }}&actividad_id={{ relacion.actividad_id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro?')">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" class="text-center">No hay asignaciones registradas</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

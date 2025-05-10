@@ -1,0 +1,59 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                {% if fsc.model.id %}Editar Tipo de Tarea{% else %}Nuevo Tipo de Tarea{% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" value="{{ fsc.model.nombre }}" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label>Actividad:</label>
+                    <select name="actividad_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for actividad in fsc.actividades %}
+                            <option value="{{ actividad.id }}" {% if fsc.model.actividad_id == actividad.id %}selected{% endif %}>{{ actividad.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea name="descripcion" class="form-control" rows="3">{{ fsc.model.descripcion }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Tiempo Estimado (min):</label>
+                            <input type="number" name="tiempo_estimado_min" value="{{ fsc.model.tiempo_estimado_min }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-check mt-4">
+                            <input type="checkbox" name="requiere_evidencia" class="form-check-input" id="requiere_evidencia" {% if fsc.model.requiere_evidencia %}checked{% endif %}>
+                            <label class="form-check-label" for="requiere_evidencia">Requiere Evidencia</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-check mt-4">
+                            <input type="checkbox" name="es_hito_presupuestario" class="form-check-input" id="es_hito_presupuestario" {% if fsc.model.es_hito_presupuestario %}checked{% endif %}>
+                            <label class="form-check-label" for="es_hito_presupuestario">Hito Presupuestario</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

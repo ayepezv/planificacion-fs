@@ -1,0 +1,14 @@
+<!-- justificaciones.xml -->
+<entity name="justificaciones">
+    <field name="id" type="integer" key="primary" autoincrement="true" />
+    <field name="tarea_id" type="integer" relation="tareas_asignadas" required="true" unique="true" />
+    <field name="motivo" type="text" />
+    <field name="solicita_ampliacion" type="bool" default="false" />
+    <field name="nueva_fecha_limite" type="datetime" />
+    <field name="tiempo_adicional_min" type="integer" />
+    <field name="fecha_solicitud" type="datetime" readonly="true" />
+    <field name="estado_aprobacion" type="string" size="20" />
+    <field name="usuario_aprobador_id" type="integer" />
+    <field name="fecha_aprobacion" type="datetime" />
+    <field name="observaciones" type="text" />
+</entity>

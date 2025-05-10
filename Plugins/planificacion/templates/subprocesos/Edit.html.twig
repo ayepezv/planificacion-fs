@@ -1,0 +1,49 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                {% if fsc.model.id %}Editar Subproceso{% else %}Nuevo Subproceso{% endif %}
+            </h2>
+        </div>
+        <div class="card-body">
+            <form method="post" class="form">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Código:</label>
+                            <input type="text" name="codigo" value="{{ fsc.model.codigo }}" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" name="nombre" value="{{ fsc.model.nombre }}" class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Proceso:</label>
+                    <select name="proceso_id" class="form-control" required>
+                        <option value="">-- Seleccione --</option>
+                        {% for proceso in fsc.procesos %}
+                            <option value="{{ proceso.id }}" {% if fsc.model.proceso_id == proceso.id %}selected{% endif %}>{{ proceso.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descripción:</label>
+                    <textarea name="descripcion" class="form-control" rows="4">{{ fsc.model.descripcion }}</textarea>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

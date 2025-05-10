@@ -1,0 +1,15 @@
+<!-- adjuntos.xml -->
+<entity name="adjuntos">
+    <field name="id" type="integer" key="primary" autoincrement="true" />
+    <field name="tarea_id" type="integer" relation="tareas_asignadas" required="true" />
+    <field name="tipo" type="string" size="50" />
+    <field name="nombre_archivo" type="string" size="255" required="true" />
+    <field name="ruta_archivo" type="string" size="255" required="true" />
+    <field name="mime_type" type="string" size="100" />
+    <field name="tamano" type="integer" />
+    <field name="fecha_subida" type="datetime" readonly="true" />
+    <field name="usuario_id" type="integer" required="true" />
+    <index name="nombre_archivo">
+        <field name="nombre_archivo" />
+    </index>
+</entity>

@@ -1,0 +1,59 @@
+{% extends "Master/ListController.html.twig" %}
+
+{% block bodyTop %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1><i class="fas fa-file-alt"></i> Procedimientos</h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a href="{{ fsc.url() }}?action=new" class="btn btn-success">
+                <i class="fas fa-plus"></i> Nuevo Procedimiento
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Subproceso</th>
+                <th>Versión</th>
+                <th>Fecha Aprobación</th>
+                <th class="text-right">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for procedimiento in fsc.procedimientos %}
+            <tr>
+                <td>{{ procedimiento.codigo }}</td>
+                <td>{{ procedimiento.nombre }}</td>
+                <td>{{ fsc.getSubprocesoNombre(procedimiento.subproceso_id) }}</td>
+                <td>{{ procedimiento.version }}</td>
+                <td>{{ procedimiento.fecha_aprobacion|date('d/m/Y') }}</td>
+                <td class="text-right">
+                    <a href="{{ fsc.url() }}?action=view&id={{ procedimiento.id }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=edit&id={{ procedimiento.id }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ fsc.url() }}?action=delete&id={{ procedimiento.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro?')">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">No hay procedimientos registrados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

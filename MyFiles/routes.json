@@ -19,6 +19,11 @@
         "customId": "",
         "position": 0
     },
+    "\/ApiCreateFacturaRectificativaCliente": {
+        "controller": "\\FacturaScripts\\Dinamic\\Controller\\ApiCreateFacturaRectificativaCliente",
+        "customId": "",
+        "position": 0
+    },
     "\/ApiExportFacturaCliente": {
         "controller": "\\FacturaScripts\\Dinamic\\Controller\\ApiExportFacturaCliente",
         "customId": "",
@@ -536,6 +541,11 @@
     },
     "\/api\/3\/crearFacturaCliente": {
         "controller": "\\FacturaScripts\\Dinamic\\Controller\\ApiCreateFacturaCliente",
+        "customId": "",
+        "position": 1
+    },
+    "\/api\/3\/crearFacturaRectificativaCliente": {
+        "controller": "\\FacturaScripts\\Dinamic\\Controller\\ApiCreateFacturaRectificativaCliente",
         "customId": "",
         "position": 1
     },

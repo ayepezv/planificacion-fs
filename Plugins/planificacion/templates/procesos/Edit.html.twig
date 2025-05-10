@@ -1,0 +1,95 @@
+{% extends "Master/EditController.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        {% if fsc.model.id %}
+                            Editar Proceso
+                        {% else %}
+                            Nuevo Proceso
+                        {% endif %}
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="form">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Código:</label>
+                                    <input type="text" name="codigo" 
+                                           value="{{ fsc.model.codigo }}" 
+                                           class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label>Nombre:</label>
+                                    <input type="text" name="nombre" 
+                                           value="{{ fsc.model.nombre }}" 
+                                           class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Tipo:</label>
+                                    <select name="tipo" class="form-control">
+                                        <option value="Gobernante" 
+                                                {% if fsc.model.tipo == 'Gobernante' %}selected{% endif %}>
+                                            Gobernante
+                                        </option>
+                                        <option value="Sustantivo" 
+                                                {% if fsc.model.tipo == 'Sustantivo' %}selected{% endif %}>
+                                            Sustantivo
+                                        </option>
+                                        <option value="Adjetivo" 
+                                                {% if fsc.model.tipo == 'Adjetivo' %}selected{% endif %}>
+                                            Adjetivo
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label>Proceso Padre:</label>
+                                    <select name="proceso_padre_id" class="form-control">
+                                        <option value="">-- Ninguno --</option>
+                                        {% for padre in fsc.procesos %}
+                                            {% if padre.id != fsc.model.id %}
+                                                <option value="{{ padre.id }}" 
+                                                        {% if fsc.model.proceso_padre_id == padre.id %}selected{% endif %}>
+                                                    {{ padre.nombre }}
+                                                </option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Descripción:</label>
+                                    <textarea name="descripcion" class="form-control" rows="4">{{ fsc.model.descripcion }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-right">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-save fa-fw"></i> Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -704,8 +704,11 @@ class __TwigTemplate_2844d2a9e0b42f8b7815ec99f8f677707cd23c2456e8308367dadd937f4
         // line 115
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getFunction('trans')->getCallable()("help"), "html", null, true);
         yield "\">
-                                <a class=\"nav-link\" href=\"https://facturascripts.com/ayuda\" rel=\"nofollow\"
-                                   target=\"_blank\" id=\"menuIconHelp\">
+                                <a class=\"nav-link\" id=\"menuIconHelp\" rel=\"nofollow\" target=\"_blank\"
+                                   href=\"https://facturascripts.com/ayuda?controller=";
+        // line 117
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["controllerName"] ?? null), "html", null, true);
+        yield "\">
                                     <i class=\"fas fa-question-circle\" aria-hidden=\"true\"></i>
                                 </a>
                             </li>
@@ -834,26 +837,26 @@ class __TwigTemplate_2844d2a9e0b42f8b7815ec99f8f677707cd23c2456e8308367dadd937f4
         yield from         $this->loadTemplate("Macro/Toasts.html.twig", "Master/MenuTemplate.html.twig", 155)->unwrap()->yield($context);
         // line 156
         yield "            ";
-        $macros["__internal_parse_0"] = $this->loadTemplate("Macro/Utils.html.twig", "Master/MenuTemplate.html.twig", 156)->unwrap();
+        $macros["__internal_parse_1"] = $this->loadTemplate("Macro/Utils.html.twig", "Master/MenuTemplate.html.twig", 156)->unwrap();
         // line 157
         yield "            <div class=\"container-fluid\">
                 <div class=\"row\">
                     <div class=\"col-12\">
                         ";
         // line 160
-        yield CoreExtension::callMacro($macros["__internal_parse_0"], "macro_message", [($context["log"] ?? null), ["error", "critical"], "danger"], 160, $context, $this->getSourceContext());
+        yield CoreExtension::callMacro($macros["__internal_parse_1"], "macro_message", [($context["log"] ?? null), ["error", "critical"], "danger"], 160, $context, $this->getSourceContext());
         yield "
                         ";
         // line 161
-        yield CoreExtension::callMacro($macros["__internal_parse_0"], "macro_message", [($context["log"] ?? null), ["warning"], "warning"], 161, $context, $this->getSourceContext());
+        yield CoreExtension::callMacro($macros["__internal_parse_1"], "macro_message", [($context["log"] ?? null), ["warning"], "warning"], 161, $context, $this->getSourceContext());
         yield "
                         ";
         // line 162
-        yield CoreExtension::callMacro($macros["__internal_parse_0"], "macro_message", [($context["log"] ?? null), ["notice"], "success"], 162, $context, $this->getSourceContext());
+        yield CoreExtension::callMacro($macros["__internal_parse_1"], "macro_message", [($context["log"] ?? null), ["notice"], "success"], 162, $context, $this->getSourceContext());
         yield "
                         ";
         // line 163
-        yield CoreExtension::callMacro($macros["__internal_parse_0"], "macro_message", [($context["log"] ?? null), ["info"], "info"], 163, $context, $this->getSourceContext());
+        yield CoreExtension::callMacro($macros["__internal_parse_1"], "macro_message", [($context["log"] ?? null), ["info"], "info"], 163, $context, $this->getSourceContext());
         yield "
                     </div>
                 </div>
@@ -899,7 +902,7 @@ class __TwigTemplate_2844d2a9e0b42f8b7815ec99f8f677707cd23c2456e8308367dadd937f4
      */
     public function getDebugInfo()
     {
-        return array (  874 => 171,  866 => 168,  856 => 163,  852 => 162,  848 => 161,  844 => 160,  839 => 157,  836 => 156,  833 => 155,  829 => 154,  824 => 147,  810 => 146,  807 => 145,  790 => 144,  783 => 140,  777 => 139,  774 => 138,  760 => 137,  757 => 136,  740 => 135,  735 => 133,  728 => 129,  724 => 128,  717 => 124,  705 => 115,  697 => 110,  692 => 109,  678 => 108,  675 => 107,  657 => 106,  653 => 105,  646 => 148,  644 => 105,  640 => 103,  631 => 101,  626 => 100,  624 => 99,  617 => 95,  612 => 93,  605 => 92,  601 => 91,  595 => 151,  593 => 91,  590 => 90,  586 => 89,  578 => 185,  573 => 182,  567 => 180,  564 => 179,  550 => 178,  547 => 177,  529 => 176,  515 => 175,  512 => 174,  494 => 173,  492 => 171,  489 => 170,  486 => 168,  484 => 154,  481 => 153,  478 => 89,  464 => 88,  461 => 87,  444 => 86,  440 => 85,  437 => 84,  433 => 83,  426 => 67,  422 => 66,  418 => 65,  414 => 64,  410 => 63,  406 => 62,  401 => 61,  397 => 60,  390 => 48,  386 => 47,  381 => 46,  377 => 45,  370 => 40,  364 => 38,  360 => 37,  350 => 32,  346 => 31,  343 => 30,  339 => 29,  334 => 188,  332 => 83,  329 => 82,  315 => 81,  312 => 80,  294 => 79,  288 => 77,  285 => 76,  271 => 75,  268 => 74,  250 => 73,  241 => 71,  236 => 70,  234 => 69,  231 => 60,  217 => 59,  214 => 58,  196 => 57,  182 => 56,  179 => 55,  161 => 54,  152 => 52,  147 => 51,  145 => 50,  142 => 45,  128 => 44,  125 => 43,  107 => 42,  104 => 37,  101 => 29,  87 => 28,  84 => 27,  67 => 26,  63 => 25,  58 => 23,  54 => 22,  51 => 21,  49 => 20,);
+        return array (  877 => 171,  869 => 168,  859 => 163,  855 => 162,  851 => 161,  847 => 160,  842 => 157,  839 => 156,  836 => 155,  832 => 154,  827 => 147,  813 => 146,  810 => 145,  793 => 144,  786 => 140,  780 => 139,  777 => 138,  763 => 137,  760 => 136,  743 => 135,  738 => 133,  731 => 129,  727 => 128,  720 => 124,  710 => 117,  705 => 115,  697 => 110,  692 => 109,  678 => 108,  675 => 107,  657 => 106,  653 => 105,  646 => 148,  644 => 105,  640 => 103,  631 => 101,  626 => 100,  624 => 99,  617 => 95,  612 => 93,  605 => 92,  601 => 91,  595 => 151,  593 => 91,  590 => 90,  586 => 89,  578 => 185,  573 => 182,  567 => 180,  564 => 179,  550 => 178,  547 => 177,  529 => 176,  515 => 175,  512 => 174,  494 => 173,  492 => 171,  489 => 170,  486 => 168,  484 => 154,  481 => 153,  478 => 89,  464 => 88,  461 => 87,  444 => 86,  440 => 85,  437 => 84,  433 => 83,  426 => 67,  422 => 66,  418 => 65,  414 => 64,  410 => 63,  406 => 62,  401 => 61,  397 => 60,  390 => 48,  386 => 47,  381 => 46,  377 => 45,  370 => 40,  364 => 38,  360 => 37,  350 => 32,  346 => 31,  343 => 30,  339 => 29,  334 => 188,  332 => 83,  329 => 82,  315 => 81,  312 => 80,  294 => 79,  288 => 77,  285 => 76,  271 => 75,  268 => 74,  250 => 73,  241 => 71,  236 => 70,  234 => 69,  231 => 60,  217 => 59,  214 => 58,  196 => 57,  182 => 56,  179 => 55,  161 => 54,  152 => 52,  147 => 51,  145 => 50,  142 => 45,  128 => 44,  125 => 43,  107 => 42,  104 => 37,  101 => 29,  87 => 28,  84 => 27,  67 => 26,  63 => 25,  58 => 23,  54 => 22,  51 => 21,  49 => 20,);
     }
 
     public function getSourceContext()
